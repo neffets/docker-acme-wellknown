@@ -1,0 +1,28 @@
+HTTP/1.0 200 Found
+Content-Type: text/xml
+Cache-Control: no-cache
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<clientConfig version="1.1">
+  <emailProvider id="neffets.de">
+    <domain>neffets.de</domain>
+    <displayName>Neffets.de Mail</displayName>
+    <displayShortName>Neffets</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.neffets.de</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType>
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>
+    <outgoingServer type="smtp">
+      <hostname>mail.neffets.de</hostname>
+      <port>587</port>
+      <socketType>STARTTLS</socketType>
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </outgoingServer>
+  </emailProvider>
+</clientConfig>

@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  wellknown:
+    image: neffets/wellknown
+    #ports: 
+    #  - "127.0.0.1:54321:54321"
+    networks:
+      - net
+    environment:
+      VIRTUAL_HOST: /.well-known/acme-challenge*, /.well-known/autoconfig/mail*
+      SERVICE_PORTS: 80
+      VIRTUAL_HOST_WEIGHT: 99
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - /etc/haproxy/ssl/:/usr/local/etc/haproxy/ssl/
+      - /etc/letsencrypt/:/etc/letsencrypt/
+
+networks:
+  net:
+    driver: overlay
+    internal: true
